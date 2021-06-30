@@ -1,7 +1,6 @@
 @import '../../../scss/index';
 
 .layout {
-  background-image: url('/assets/img/bg.png');
   @include background(center, no-repeat, cover);
   min-height: 100vh;
   padding: 2rem 0;

@@ -1,7 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 @import './scss/index';
 body{
-  padding: 0;
   margin: 0;
   display : block;
+  section{
+    padding: 1rem 0;
+  }
+  .container-l{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 30px;
+    // btn
+    .btn-blue{
+      color: $color-blue-clear;
+      padding: 5px 30px;
+      border: 1px solid;
+      border-radius: 16px;
+      font-weight: bold;
+      min-width: 150px;
+      text-align: center;
+      transition: 0.5s;
+      &:hover{
+        transition: 0.5s;
+        background-color:$color-blue-clear;
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+  }
 }

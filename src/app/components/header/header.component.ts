@@ -9,32 +9,16 @@ export class HeaderComponent {
   classMenuBtn;
   classMenuItems;
   classMenuOpen;
-  logo = '../assets/img/logo.png';
+  logo = '../assets/img/logo-header.svg';
   items = [
     {
-      label: 'INICIO',
+      label: 'Inicio',
       link: '/'
     },
     {
-      label: 'SERVICIOS',
+      label: 'Beneficios',
       link: '/'
-    },
-    {
-      label: 'NUESTRO EQUIPO',
-      link: '/'
-    },
-    {
-      label: 'PORTAFOLIO',
-      link: '/'
-    },
-    {
-      label: 'CONTÁCTO',
-      link: '/'
-    },
-    {
-      label: 'TÉRMINO Y CONDICIONES',
-      link: '/'
-    },
+    }
   ];
 
   menu() {

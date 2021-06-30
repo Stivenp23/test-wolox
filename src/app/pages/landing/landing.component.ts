@@ -5,11 +5,11 @@ import {Store} from '@ngrx/store';
 import {AppState} from '../../reducers';
 
 @Component({
-  selector: 'app-home-product',
-  templateUrl: './home-product.component.html',
-  styleUrls: ['./home-product.component.scss'],
+  selector: 'app-landing',
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.scss'],
 })
-export class HomeProductComponent implements OnInit {
+export class LandingComponent implements OnInit {
   data$: Observable<any>;
 
   constructor(

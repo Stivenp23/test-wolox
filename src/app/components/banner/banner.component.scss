@@ -1,0 +1,53 @@
+@import '../../../scss/index';
+
+.banner {
+  background-image: url('/assets/img/bg-header.png');
+  @include background(center, no-repeat, 100%);
+  padding-top: 110px;
+  @media (max-width: $responsive) {
+    padding-top: 90px;
+  }
+
+  &__row-content {
+    flex-wrap: wrap;
+    @include display-align(flex, center, center);
+  }
+
+  &__col {
+    width: 50%;
+    @media (max-width: $responsive) {
+      width: 100%;
+    }
+
+    .content {
+      @media (max-width: $responsive) {
+        margin-bottom: 50px;
+      }
+
+      h1 {
+        color: $color-gray-clean;
+        font-size: 3.5rem;
+        line-height: 1.1;
+        @media (max-width: $responsive) {
+          text-align: center;
+          font-size: 1.8rem;
+        }
+
+        span {
+          color: $color-green;
+        }
+      }
+    }
+
+    .content-image {
+      text-align: center;
+
+      img {
+        width: 100%;
+        @media (max-width: $responsive) {
+          max-width: 450px;
+        }
+      }
+    }
+  }
+}

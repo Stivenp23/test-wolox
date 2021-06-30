@@ -5,13 +5,13 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Components
 import {AppComponent} from './app.component';
-import {HomeProductComponent} from './pages/home-product/home-product.component';
+import {LandingComponent} from './pages/landing/landing.component';
 import {LoginComponent} from './pages/login/login.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HeaderComponent} from './components/header/header.component';
 import {TabsLoginComponent} from './components/tabs-login/tabs-login.component';
 import {ThkModuleComponent} from './components/thk-module/thk-module.component';
-
+import {BannerComponent} from "./components/banner/banner.component";
 // Redux
 import * as reducers from './reducers';
 import {EffectsModule} from '@ngrx/effects';
@@ -30,12 +30,13 @@ export const reducerToken = new InjectionToken<ActionReducerMap<State<reducers.A
 @NgModule({
   declarations: [
     AppComponent,
-    HomeProductComponent,
+    LandingComponent,
     LoginComponent,
     FooterComponent,
     HeaderComponent,
     TabsLoginComponent,
-    ThkModuleComponent
+    ThkModuleComponent,
+    BannerComponent
   ],
   imports: [
     CommonModule,

@@ -1,108 +1,95 @@
 @import '../../../scss/index';
 
-header {
+.header {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   min-height: 60px;
   z-index: 6;
+  background-color: transparent;
+  padding: 20px 0;
 
-  .menu-toggle {
-    padding: 1em;
-    position: absolute;
-    right: 0.5em;
-    top: 1em;
-
-    .hamburger, .hamburger:before {
-      content: '';
-      display: block;
-      background: $color-white;
-      height: 2px;
-      width: 1.8em;
-      border-radius: 3px;
-      transition: 0.3s ease-in-out;
-    }
-    .hamburger{
-      &:before {
-        transform: translate(0, -7px);
-      }
-    }
-    &.open{
-      .hamburger{
-        transform: rotate(45deg);
-        &:before{
-          transform: translateY(0) rotate(-90deg);
-        }
-      }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    @media (max-width: $responsive) {
+      padding: 0;
     }
   }
 
-  &.menu-open {
-    height: 100%;
-    background-image: url(/assets/img/bg.png);
-    @include background(center, no-repeat, 100%);
+  &__logo {
+    img {
+      max-width: 200px;
+    }
   }
 
-  &:after {
-    content: '';
-    clear: both;
+  &__site-nav {
+    position: relative;
     display: block;
-  }
+    @media (max-width: $responsive) {
+      display: none;
+    }
 
-  .site-nav {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    clip-path: circle(0px at top right);
-    width: 100%;
-    display: block;
-
-    &--open {
-      clip-path: circle(200% at top right);
-      max-width: 500px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      text-align: center;
-      @media (max-width: 600px) {
+    &.site-nav--open {
+      @media (max-width: $responsive) {
+        clip-path: circle(200% at top right);
+        max-width: $responsive;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        display: block;
+        position: absolute;
+        top: 60px;
+        width: 100%;
         text-align: left;
+        background-color: $color-white;
+        padding: 10px 0 20px;
       }
     }
 
     ul {
       margin: 0;
-      padding: 0 40px;
+      padding: 0 10px;
       list-style: none;
+      display: flex;
+      @media (max-width: $responsive) {
+        flex-direction: column;
+      }
 
       li {
         color: $color-white-clean;
-        display: block;
+        flex-direction: column;
+        @include display-align(flex, center, center);
+        margin: 0 12px;
+        @media (max-width: $responsive) {
+          align-items: flex-start;
+        }
 
         a {
-          color: $color-gray-clean;
+          @media (max-width: $responsive) {
+            margin: 10px 0;
+          }
+        }
+
+        .items {
+          color: $color-black;
           text-decoration: none;
-          font-size: 1rem;
-          font-weight: 700;
+          font-size: 1.2rem;
           font-family: 'Dosis', sans-serif;
           width: 100%;
           position: relative;
           display: block;
-          padding: 1em;
+          padding: 0.5rem;
+          font-weight: bold;
+          border-bottom: 1px solid transparent;
 
-          &:focus {
-            color: $color-white;
-
-            &:before {
-              content: "";
-              width: 30px;
-              height: 2px;
-              background-color: $color-blue-clear;
-              display: block;
-              position: absolute;
-              left: -30px;
-              top: 28px;
-            }
+          &:hover {
+            color: $color-blue-clear;
+            border-bottom: 1px solid $color-blue-clear;
           }
         }
 
@@ -111,10 +98,53 @@ header {
     }
   }
 
-  .layout {
-    &__logo {
-      text-align: center;
-      margin: 2rem 0;
+  .menu-toggle {
+    padding: 1em;
+    position: absolute;
+    right: 0.5em;
+    top: 1em;
+    display: none;
+    cursor: pointer;
+    @media (max-width: $responsive) {
+      display: block;
+    }
+
+    .hamburger, .hamburger:before {
+      content: '';
+      display: block;
+      background: $color-black;
+      height: 2px;
+      width: 1.8em;
+      border-radius: 3px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .hamburger {
+      &:before {
+        transform: translate(0, -7px);
+      }
+    }
+
+    &.open {
+      .hamburger {
+        transform: rotate(45deg);
+
+        &:before {
+          transform: translateY(0) rotate(-90deg);
+        }
+      }
     }
   }
+
+  &.menu-open {
+    background-color: $color-white;
+  }
+
+  &:after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+
+
 }
