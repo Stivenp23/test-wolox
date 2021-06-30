@@ -1,0 +1,23 @@
+@import '../../../scss/index';
+
+.tnk-module {
+  background-color: $color-blue-medium;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    color: $color-purple-dark;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 900;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1.1;
+  }
+
+  .image {
+    padding-left: 20px;
+  }
+}
