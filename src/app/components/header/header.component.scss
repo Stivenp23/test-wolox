@@ -9,7 +9,9 @@
   z-index: 6;
   background-color: transparent;
   padding: 20px 0;
-
+  &.fixed-header{
+    background-color: $color-white;
+  }
   &__content {
     display: flex;
     flex-direction: row;
@@ -73,6 +75,7 @@
         }
 
         a {
+          cursor: pointer;
           @media (max-width: $responsive) {
             margin: 10px 0;
           }

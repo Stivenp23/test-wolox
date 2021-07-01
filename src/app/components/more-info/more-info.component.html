@@ -4,9 +4,12 @@
         <h2>Gracias por <span class="blue">completar el ejercicio</span></h2>
         <p>Te invitamos a ver más información</p>
         <div class="btn">
-          <a class="btn-blue-bg" routerLink="/">
-            Conocer más
-          </a>
+          <a *ngIf="link?.substring(0, 1) === '/'; else normal"
+             class="btn-blue-bg"
+             [routerLink]="link">Conocer más</a>
+          <ng-template #normal>
+            <a class="btn-blue-bg" [href]="link" target="_blank">Conocer más</a>
+          </ng-template>
         </div>
       </div>
     </div>

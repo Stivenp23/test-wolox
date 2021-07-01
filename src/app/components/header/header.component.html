@@ -1,4 +1,4 @@
-<header class="header" [ngClass]="classMenuOpen || ''">
+<header class="header" [ngClass]="[classMenuOpen || '', classHeader || '']">
   <div class="container-l">
     <div class="header__content">
       <div class="header__logo">
@@ -12,10 +12,15 @@
       <nav class="header__site-nav" [ngClass]="classMenuItems || ''">
         <ul *ngIf="items?.length > 0">
           <li *ngFor="let item of items">
-            <a class="items" [routerLink]="item?.link">{{item?.label}}</a>
+            <a *ngIf="item?.link?.substring(0, 1) === '/'; else ancla"
+                class="items"
+               [routerLink]="item?.link">{{item?.label}}</a>
+            <ng-template #ancla>
+              <a class="items" (click)="anchor(item?.link)">{{item?.label}}</a>
+            </ng-template>
           </li>
           <li>
-            <a class="btn-blue" routerLink="/">
+            <a class="btn-blue" routerLink="/login">
               Login
             </a>
           </li>

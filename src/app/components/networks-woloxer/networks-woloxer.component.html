@@ -8,9 +8,12 @@
               <p><strong><span class="green">350 + </span><span class="blue">Woloxers</span></strong></p>
               <p class="p-wolox"><img src="../../../assets/img/icon-twitter.png"/> @Wolox</p>
               <div class="networks-woloxer__btn">
-                <a class="btn-blue" routerLink="/">
-                  Siguenos
-                </a>
+                <a *ngIf="link?.substring(0, 1) === '/'; else normal"
+                   class="btn-blue"
+                   [routerLink]="link">Siguenos</a>
+                <ng-template #normal>
+                  <a class="btn-blue" [href]="link" target="_blank">Siguenos</a>
+                </ng-template>
               </div>
             </div>
           </div>

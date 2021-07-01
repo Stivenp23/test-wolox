@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./more-info.component.scss'],
 })
 export class MoreInfoComponent {
-
+  link = 'http://www.wolox.com.ar/'
 }

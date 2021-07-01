@@ -6,5 +6,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./networks-woloxer.component.scss'],
 })
 export class NetworksWoloxerComponent {
-  image = '../assets/img/img-woloxer.png';
+  image = '../assets/img/img-woloxer.png'
+  link = 'http://www.twitter.com/Wolox'
 }
