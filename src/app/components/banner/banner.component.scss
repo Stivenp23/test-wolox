@@ -3,9 +3,11 @@
 .banner {
   background-image: url('/assets/img/bg-header.png');
   @include background(center, no-repeat, 100%);
-  padding-top: 110px;
+  padding-top: 9.6rem;
+  padding-bottom: 9rem;
   @media (max-width: $responsive) {
-    padding-top: 90px;
+    padding-top: 6rem;
+    padding-bottom: 5rem;
   }
 
   &__row-content {
@@ -26,11 +28,13 @@
 
       h1 {
         color: $color-gray-clean;
-        font-size: 3.5rem;
+        font-size: 2.9rem;
         line-height: 1.1;
+        padding: 0 50px;
         @media (max-width: $responsive) {
           text-align: center;
           font-size: 1.8rem;
+          padding: 0;
         }
 
         span {
@@ -44,6 +48,7 @@
 
       img {
         width: 100%;
+        max-width: 420px;
         @media (max-width: $responsive) {
           max-width: 450px;
         }

@@ -7,9 +7,12 @@ body{
     padding: 1rem 0;
   }
   .container-l{
-    max-width: 1180px;
+    max-width: 1366px;
     margin: 0 auto;
     padding: 0 30px;
+    &.n-padding{
+      padding: 0;
+    }
     // btn
     .btn-blue{
       color: $color-blue-clear;

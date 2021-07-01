@@ -1,0 +1,113 @@
+@import '../../../scss/index';
+
+.networks-woloxer {
+  padding: 0;
+  position: relative;
+
+  .blue {
+    color: $color-blue-medium;
+  }
+
+  .green {
+    color: $color-green;
+  }
+
+  &__row-content {
+    flex-wrap: wrap;
+    background-color: $color-gray;
+    @include display-align(flex, center, center);
+  }
+
+  &__col {
+    width: 50%;
+    @media (max-width: $responsive) {
+      width: 100%;
+    }
+
+    .content {
+      padding: 0 6rem;
+      @media (max-width: $responsive) {
+        padding: 3rem 1.0rem;
+      }
+
+      h2 {
+        color: $color-gray-clean;
+        font-size: 2.7rem;
+        line-height: 1.1;
+        text-align: center;
+        @media (max-width: $responsive) {
+          text-align: center;
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    .content-image {
+      text-align: center;
+      position: relative;
+
+      img {
+        width: 100%;
+        @media (max-width: $responsive) {
+          max-width: 750px;
+        }
+      }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include display-align(flex, center, center);
+    flex-direction: column;
+
+    p {
+      font-size: 3.3rem;
+      line-height: 1.1;
+      color: white;
+      @media (max-width: $responsive) {
+        font-size: 2.0rem;
+        line-height: 1.1;
+      }
+
+      &.p-wolox {
+        font-size: 1.5rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        @include display-align(flex, center, center);
+        @media (max-width: $responsive) {
+          font-size: 1.0rem;
+          margin-bottom: 1rem;
+        }
+
+        img {
+          max-width: 50px;
+          padding-right: 10px;
+          @media (max-width: $responsive) {
+            max-width: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  &__btn {
+    a {
+      color: $color-white;
+      border-color: $color-blue-clear;
+      padding: 0.7rem 3.5rem;
+      border-radius: 28px;
+      font-size: 1.2rem;
+      line-height: 1.1;
+      @media (max-width: $responsive) {
+        padding: 0.5rem 3.0rem;
+        border-radius: 28px;
+        font-size: 0.8rem;
+        line-height: 1.1;
+      }
+    }
+  }
+}

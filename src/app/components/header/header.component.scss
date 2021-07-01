@@ -24,6 +24,9 @@
   &__logo {
     img {
       max-width: 200px;
+      @media (max-width: $responsive) {
+        max-width: 100px;
+      }
     }
   }
 
