@@ -14,6 +14,7 @@ import {ThkModuleComponent} from './components/thk-module/thk-module.component';
 import {BannerComponent} from './components/banner/banner.component';
 import {NetworksWoloxerComponent} from './components/networks-woloxer/networks-woloxer.component';
 import {BenefitsComponent} from './components/benefits/benefits.component';
+import {MoreInfoComponent} from './components/more-info/more-info.component';
 // Redux
 import * as reducers from './reducers';
 import {EffectsModule} from '@ngrx/effects';
@@ -40,7 +41,8 @@ export const reducerToken = new InjectionToken<ActionReducerMap<State<reducers.A
     ThkModuleComponent,
     BannerComponent,
     NetworksWoloxerComponent,
-    BenefitsComponent
+    BenefitsComponent,
+    MoreInfoComponent
   ],
   imports: [
     CommonModule,

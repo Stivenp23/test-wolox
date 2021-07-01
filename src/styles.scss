@@ -1,20 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @import './scss/index';
-body{
+
+body {
   margin: 0;
-  display : block;
-  section{
+  display: block;
+
+  section {
     padding: 1rem 0;
   }
-  .container-l{
+
+  .container-l {
     max-width: 1366px;
     margin: 0 auto;
     padding: 0 30px;
-    &.n-padding{
+
+    &.n-padding {
       padding: 0;
     }
+
     // btn
-    .btn-blue{
+    .btn-blue {
       color: $color-blue-clear;
       padding: 5px 30px;
       border: 1px solid;
@@ -23,10 +28,29 @@ body{
       min-width: 150px;
       text-align: center;
       transition: 0.5s;
+
+      &:hover {
+        transition: 0.5s;
+        background-color: $color-blue-clear;
+        color: $color-white;
+        text-decoration: none;
+      }
+    }
+    .btn-blue-bg{
+      color: $color-white;
+      background-color: $color-blue-clear;
+      padding: 0.5rem 2.5rem;
+      border: 1px solid;
+      border-radius: 22px;
+      font-weight: bold;
+      min-width: 150px;
+      text-align: center;
+      transition: 0.5s;
       &:hover{
         transition: 0.5s;
-        background-color:$color-blue-clear;
-        color: $color-white;
+        border: 1px solid;
+        background-color:$color-white;
+        color: $color-blue-clear;
         text-decoration: none;
       }
     }

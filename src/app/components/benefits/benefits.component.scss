@@ -2,9 +2,12 @@
 
 .benefits {
   position: relative;
-  padding: 5rem 0;
-  @media (max-width: $responsive) {
-    padding: 3rem 0;
+  padding: 0;
+  .container-l{
+    padding: 5rem 0;
+    @media (max-width: $responsive) {
+      padding: 3rem 1rem;
+    }
   }
 
   &::after {
@@ -12,9 +15,12 @@
     width: 80%;
     height: 24px;
     box-shadow: -5px 13px 15px -11px rgb(142 143 146 / 83%);
-    position: relative;
+    position: absolute;
     display: block;
     margin: 0 auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
   .blue {
@@ -34,6 +40,7 @@
       font-weight: 400;
       @media (max-width: $responsive) {
         font-size: 1.5rem;
+        padding: 0 1rem;
       }
     }
   }
@@ -55,6 +62,7 @@
   }
 
   &__content {
+
   }
 
   &__image {
