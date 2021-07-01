@@ -13,6 +13,7 @@ import {TabsLoginComponent} from './components/tabs-login/tabs-login.component';
 import {ThkModuleComponent} from './components/thk-module/thk-module.component';
 import {BannerComponent} from './components/banner/banner.component';
 import {NetworksWoloxerComponent} from './components/networks-woloxer/networks-woloxer.component';
+import {BenefitsComponent} from './components/benefits/benefits.component';
 // Redux
 import * as reducers from './reducers';
 import {EffectsModule} from '@ngrx/effects';
@@ -38,7 +39,8 @@ export const reducerToken = new InjectionToken<ActionReducerMap<State<reducers.A
     TabsLoginComponent,
     ThkModuleComponent,
     BannerComponent,
-    NetworksWoloxerComponent
+    NetworksWoloxerComponent,
+    BenefitsComponent
   ],
   imports: [
     CommonModule,
