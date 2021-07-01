@@ -8,15 +8,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class TabsLoginComponent implements OnInit {
   @Output() submitValid: EventEmitter<any> = new EventEmitter<any>();
-  active = 1;
-  formLogin: FormGroup;
-  formRegister: FormGroup;
-  labelTerms = 'Suscribirse al Newsletter';
-  nameTerms = 'terms';
-  labelBtn = 'Ingreso';
-  labelBtnRegister = 'Registro';
-  labelRecovery = 'Olvide Contraseña';
-  msgError = '<img src="/assets/img/icono-error.png"> Required';
+  active = 1
+  formLogin: FormGroup
+  formRegister: FormGroup
+  labelTerms = 'Suscribirse al Newsletter'
+  nameTerms = 'terms'
+  labelBtn = 'Ingreso'
+  labelBtnRegister = 'Registro'
+  labelRecovery = 'Olvide Contraseña'
+  msgError = '<img src="/assets/img/icono-error.png"> Required'
   tabs = [
     {
       tabLabel: 'INGRESO',

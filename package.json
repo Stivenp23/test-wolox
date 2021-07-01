@@ -24,6 +24,7 @@
     "@ngrx/effects": "^8.6.0",
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
+    "aos": "^2.3.4",
     "bootstrap": "^4.0.0-beta.2",
     "date-fns": "^2.22.1",
     "flatpickr": "^4.6.9",

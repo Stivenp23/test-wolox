@@ -1,9 +1,9 @@
 <section class="more-info">
     <div class="container-l">
       <div class="more-info__content">
-        <h2>Gracias por <span class="blue">completar el ejercicio</span></h2>
+        <h2 data-aos="fade-down-left">Gracias por <span class="blue">completar el ejercicio</span></h2>
         <p>Te invitamos a ver más información</p>
-        <div class="btn">
+        <div class="btn" data-aos="zoom-in-up">
           <a *ngIf="link?.substring(0, 1) === '/'; else normal"
              class="btn-blue-bg"
              [routerLink]="link">Conocer más</a>

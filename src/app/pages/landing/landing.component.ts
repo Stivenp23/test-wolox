@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
-import {AppState} from '../../reducers';
+import {Component, OnInit} from '@angular/core'
+import {Router} from '@angular/router'
+import {Store} from '@ngrx/store'
+import {AppState} from '../../reducers'
+import * as AOS from 'aos'
 
 @Component({
   selector: 'app-landing',
@@ -10,7 +10,6 @@ import {AppState} from '../../reducers';
   styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent implements OnInit {
-  data$: Observable<any>;
 
   constructor(
     public store: Store<AppState>,
@@ -19,5 +18,19 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnInit() {
+    let scrollRef = 0
+    window.addEventListener('scroll', function () {
+      scrollRef <= 10 ? scrollRef++ : AOS.refresh()
+    })
+    document.onreadystatechange = function () {
+      if (document.readyState === 'complete') {
+        AOS.init({
+          duration: 900,
+          delay: 200,
+          once: true
+        })
+      }
+    };
+
   }
 }

@@ -15,7 +15,7 @@ import {AppState} from '../../reducers';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  logo = '../assets/img/logo.png';
+  logo = '../assets/img/logo-header.svg'
   formSuccess: boolean;
 
   constructor(
