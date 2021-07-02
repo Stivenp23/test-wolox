@@ -16,21 +16,6 @@
           (formLogin.get(formLoginT?.name).dirty || formLogin.get(formLoginT?.name).touched)
         " [innerHTML]="msgError"></div>
             </div>
-            <div class="form__input-container">
-             <div class="radio">
-               <label class="switch">
-                 <input type="checkbox" id="terms" [formControlName]="nameTerms" checked>
-                 <span class="slider round"></span>
-               </label>
-               <label class="form__text" for="terms">{{labelTerms}}</label>
-             </div>
-              <div
-                class="error-field"
-                *ngIf="
-          formLogin.get(nameTerms).invalid &&
-          (formLogin.get(nameTerms).dirty || formLogin.get(nameTerms).touched)"
-             [innerHTML]="msgError"></div>
-            </div>
             <div class="form__input-container btn-submit">
               <button type="submit">{{labelBtn}}</button>
             </div>
@@ -47,15 +32,41 @@
         <div class="form register">
           <form [formGroup]="formRegister" (ngSubmit)="onSubmit('register')">
             <div class="form__input-container" *ngFor="let formRegisterT of tabs[1]?.form?.fieldsRegister">
-              <label>{{formRegisterT?.label}}</label>
-              <input [type]="formRegisterT?.type" [formControlName]="formRegisterT?.name"
-                     [placeholder]="formRegisterT?.placeholders"/>
+              <ng-container *ngIf="formRegisterT.type === 'select'; else input">
+                <label class="country">Pais</label>
+                <ng-select formControlName="country" *ngIf="(countryService.country$ | async) as countryData">
+                  <ng-option *ngFor="let country of countryData" [value]="country?.name + '|' + country?.capital"><img
+                    [src]="country?.flag" class="flag-country"/> {{country?.name || ''}}</ng-option>
+                </ng-select>
+              </ng-container>
+              <ng-template #input>
+                <label>{{formRegisterT?.label}}</label>
+                <input [type]="formRegisterT?.type" [formControlName]="formRegisterT?.name"
+                       [placeholder]="formRegisterT?.placeholders"/>
+              </ng-template>
               <div
                 class="error-field"
                 *ngIf="
           formRegister.get(formRegisterT?.name).invalid &&
-          (formRegister.get(formRegisterT?.name).dirty || formRegister.get(formRegisterT?.name).touched)
-        " [innerHTML]="msgError"></div>
+          (formRegister.get(formRegisterT?.name).dirty || formRegister.get(formRegisterT?.name).touched)"
+                [innerHTML]="msgError"></div>
+            </div>
+            <div class="password-issue" *ngIf="passwordIssue">{{passwordIssue}}</div>
+            <div class="form__input-container">
+              <div class="radio">
+                <label class="switch">
+                  <input type="checkbox" id="terms" [formControlName]="nameTerms" checked>
+                  <span class="slider round"></span>
+                </label>
+                <label class="form__text" for="terms">Acepto <a routerLink="/terminos-y-condiciones">Términos y
+                  Condiciones</a></label>
+              </div>
+              <div
+                class="error-field"
+                *ngIf="
+          formRegister.get(nameTerms).invalid &&
+          (formRegister.get(nameTerms).dirty || formRegister.get(nameTerms).touched)"
+                [innerHTML]="msgError"></div>
             </div>
             <div class="form__input-container btn-submit">
               <button type="submit">{{labelBtnRegister}}</button>
