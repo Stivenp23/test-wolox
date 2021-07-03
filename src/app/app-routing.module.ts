@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router'
 import {LandingComponent} from './pages/landing/landing.component'
 import {LoginComponent} from './pages/login/login.component'
 import {TermsComponent} from './pages/terms/terms.component'
+import {ListPokemonComponent} from './pages/list-pokemon/list-pokemon.component'
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'terminos-y-condiciones',
     component: TermsComponent,
+  },
+  {
+    path: 'lista-pokemones',
+    component: ListPokemonComponent,
   }
 ]
 

@@ -1,11 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+// The list-pokemon of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
   endPointCountry: 'https://restcountries.eu/rest/v2',
   endPointSignUp: 'http://private-8e8921-woloxfrontendinverview.apiary-mock.com',
+  endPointPokemon: 'https://pokeapi.co/api/v2',
 }
 
 /*

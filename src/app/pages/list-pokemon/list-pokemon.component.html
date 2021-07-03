@@ -1,0 +1,43 @@
+<div class="layout">
+  <section class="login container">
+    <div class="layout__logo">
+      <img [src]="logo"/>
+    </div>
+    <div class="layout__content">
+      <div class="search__content">
+        <div class="input-container">
+          <label>Ingresa nombre del pokemon:</label>
+          <input (keyup)="search()" [(ngModel)]="namePokemon"/>
+          <p class="result" *ngIf="namePokemon && dataTemp?.length > 0; else noFound">
+            Resultados para: '<strong>{{namePokemon}}</strong>'</p>
+          <ng-template #noFound>
+            <p class="result" *ngIf="namePokemon">
+              No se encontraron resultados para: '<strong>{{namePokemon}}</strong>'</p>
+          </ng-template>
+        </div>
+      </div>
+      <div class="row__content" *ngIf="listPokemonService.allPokemon$ | async as allPokemon">
+        <ng-container *ngIf="dataTemp?.length > 0; else normal">
+          <div class="col__content" *ngFor="let pokemon of dataTemp">
+            <p *ngIf="pokemon?.name">{{pokemon?.name}}</p>
+          </div>
+        </ng-container>
+        <ng-template #normal>
+          <div class="col__content" *ngFor="let pokemon of allPokemon | slice: 0 : countPagination">
+            <p *ngIf="pokemon?.name">{{pokemon?.name}}</p>
+          </div>
+        </ng-template>
+      </div>
+      <div class="pagination__content">
+        <select [(ngModel)]="countPagination">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

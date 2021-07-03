@@ -1,0 +1,65 @@
+@import '../../../scss/index';
+
+.layout {
+  @include background(center, no-repeat, cover);
+  min-height: 100vh;
+  padding: 2rem 0;
+  background-color: $color-bg-layout;
+
+  &__logo {
+    text-align: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+
+    img {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
+
+  &__content {
+    padding: 0 0.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+
+    .search__content {
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        label {
+          text-transform: uppercase;
+        }
+
+        .result {
+          margin: 1rem 0;
+        }
+      }
+    }
+
+    .row__content {
+      .col__content {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid $color-green;
+        color: $color-black-clear;
+
+        p {
+          margin: 0;
+          text-transform: capitalize;
+          font-size: 1.2rem;
+          line-height: 1.1;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .pagination__content {
+      text-align: right;
+      padding: 2rem 0;
+      select {
+
+      }
+    }
+  }
+}
