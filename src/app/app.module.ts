@@ -18,6 +18,7 @@ import {BenefitsComponent} from './components/benefits/benefits.component'
 import {MoreInfoComponent} from './components/more-info/more-info.component'
 import {TermsComponent} from './pages/terms/terms.component'
 import {ListPokemonComponent} from './pages/list-pokemon/list-pokemon.component'
+import {ComparePokemonComponent} from './pages/compare-pokemon/compare-pokemon.component';
 // Services
 import {AppService} from './services/app.service'
 import {CountryService} from './services/country.service'
@@ -53,7 +54,8 @@ export const reducerToken = new InjectionToken<ActionReducerMap<State<reducers.A
     BenefitsComponent,
     MoreInfoComponent,
     TermsComponent,
-    ListPokemonComponent
+    ListPokemonComponent,
+    ComparePokemonComponent
   ],
   imports: [
     CommonModule,

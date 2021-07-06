@@ -1,0 +1,49 @@
+<div class="layout">
+  <section class="login container">
+    <div class="layout__logo">
+      <img [src]="logo"/>
+    </div>
+    <div class="layout__content">
+      <div class="row justify-content-center" *ngIf="listPokemonService.pokemonSelected$ | async as pokemonSelected">
+        <div class="col-12 col-lg-4" *ngFor="let item of pokemonSelected">
+          <div class="card">
+            <div class="image" *ngIf="item?.sprites?.front_default">
+              <img [src]="item?.sprites?.front_default"/>
+            </div>
+            <div class="info-name">
+              <p>{{ item?.name || '' }} - ID: {{item?.id || '' }}</p>
+            </div>
+            <div class="content-info border-b">
+              <div class="row">
+                <div class="col" *ngIf="item?.height">
+                  <p>{{item?.height}}</p>
+                  <p><strong>Altura</strong></p>
+                </div>
+                <div class="col" *ngIf="item?.weight">
+                  <p>{{item?.weight}}</p>
+                  <p><strong>Peso</strong></p>
+                </div>
+              </div>
+            </div>
+            <div class="content-type border-b">
+              <ul class="type">
+                <li *ngFor="let type  of item?.types">{{type?.type?.name || ''}}</li>
+              </ul>
+              <p><strong>Tipo/s</strong></p>
+            </div>
+            <div class="move">
+              <ul>
+                <li *ngFor="let type  of item?.stats">{{type?.stat?.name || ''}}</li>
+              </ul>
+              <p><strong>Movimientos aprendidos</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-l content-btn">
+        <a class="btn-blue-bg"  routerLink="/lista-pokemones">Volver</a>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

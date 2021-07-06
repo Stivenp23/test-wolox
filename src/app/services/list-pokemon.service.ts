@@ -8,11 +8,15 @@ import {Observable} from 'rxjs'
   providedIn: 'root',
 })
 export class ListPokemonService {
-  allPokemon$: Observable<any> = this.store.select('pokemon')
+  allPokemon$: Observable<any> = this.store.select('pokemon', 'listPokemon')
+  pokemonSelected$: Observable<any> = this.store.select('pokemon', 'pokemonSelected')
   constructor(private http: HttpClient, private store: Store<any>) {
   }
 
-  getAllPokemon() {
-    return this.http.get(`${environment.endPointPokemon}/pokemon?offset=150&limit=150`)
+  getAllPokemon(cant) {
+    return this.http.get(`${environment.endPointPokemon}/pokemon?offset=${cant}&limit=${cant}`)
+  }
+  getPokemon(endPoint) {
+    return this.http.get(`${endPoint}`)
   }
 }

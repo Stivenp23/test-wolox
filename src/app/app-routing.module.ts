@@ -4,6 +4,7 @@ import {LandingComponent} from './pages/landing/landing.component'
 import {LoginComponent} from './pages/login/login.component'
 import {TermsComponent} from './pages/terms/terms.component'
 import {ListPokemonComponent} from './pages/list-pokemon/list-pokemon.component'
+import {ComparePokemonComponent} from './pages/compare-pokemon/compare-pokemon.component'
 
 const routes: Routes = [
   {
@@ -20,7 +21,11 @@ const routes: Routes = [
   },
   {
     path: 'lista-pokemones',
-    component: ListPokemonComponent,
+    component: ListPokemonComponent
+  },
+  {
+    path: 'compare',
+    component: ComparePokemonComponent,
   }
 ]
 

@@ -1,5 +1,5 @@
 <div class="layout">
-  <section class="login container">
+  <section class="login container-l">
     <div class="layout__logo">
       <img [src]="logo"/>
     </div>
@@ -16,25 +16,35 @@
           </ng-template>
         </div>
       </div>
+      <div class="content-btn" *ngIf="btnFlag">
+        <button class="btn-blue-bg"  routerLink="/compare">Comparar</button>
+      </div>
       <div class="row__content" *ngIf="listPokemonService.allPokemon$ | async as allPokemon">
         <ng-container *ngIf="dataTemp?.length > 0; else normal">
           <div class="col__content" *ngFor="let pokemon of dataTemp">
             <p *ngIf="pokemon?.name">{{pokemon?.name}}</p>
+            <div class="input-container">
+              <input type="checkbox" [name]="pokemon?.name"
+                     (change)="onChange(pokemon.url, $event.target.checked)"
+                     [disabled]="isDisabled">
+            </div>
           </div>
         </ng-container>
         <ng-template #normal>
-          <div class="col__content" *ngFor="let pokemon of allPokemon | slice: 0 : countPagination">
+          <div class="col__content" *ngFor="let pokemon of allPokemon">
             <p *ngIf="pokemon?.name">{{pokemon?.name}}</p>
+            <div class="input-container">
+              <input type="checkbox" [name]="pokemon?.name"
+                     (change)="onChange(pokemon.url, $event.target.checked)"
+                     [disabled]="isDisabled">
+            </div>
           </div>
         </ng-template>
       </div>
       <div class="pagination__content">
-        <select [(ngModel)]="countPagination">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
+        <select [(ngModel)]="countPagination" (ngModelChange)="getNewCant()">
+          <option *ngFor="let item of pagination"
+                  [value]="item">{{item}}</option>
         </select>
       </div>
     </div>

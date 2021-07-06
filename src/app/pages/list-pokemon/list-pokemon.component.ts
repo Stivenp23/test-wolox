@@ -22,6 +22,11 @@ export class ListPokemonComponent implements OnInit {
   namePokemon = ''
   dataTemp = []
   countPagination = 20
+  arraySelected = []
+  isDisabled = false
+  pagination = [5, 10, 20, 50, 100]
+  btnFlag = false
+
   constructor(
     public store: Store<AppState>,
     public router: Router,
@@ -30,7 +35,8 @@ export class ListPokemonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(PokemonActions.getAllPokemon())
+    this.store.dispatch(PokemonActions.getAllPokemon(this.countPagination))
+    this.store.dispatch(PokemonActions.getPokemonClean())
   }
 
   search() {
@@ -41,11 +47,42 @@ export class ListPokemonComponent implements OnInit {
         map(data => {
           this.dataTemp = data.filter(poke => {
             if (poke?.name.includes(this.namePokemon)) {
-              return  {...data, poke}
+              return {...data, poke}
             }
           })
         })
       ).subscribe()
+    }
+  }
+
+  getNewCant() {
+    this.store.dispatch(PokemonActions.getAllPokemon(this.countPagination))
+  }
+
+  onChange(endPoint: string, isChecked: boolean) {
+    if (isChecked) {
+      this.arraySelected.push(endPoint)
+      this.store.dispatch(PokemonActions.getPokemonId(endPoint))
+      if (this.arraySelected?.length >= 1) {
+        this.btnFlag = true
+      }
+      if (this.arraySelected?.length >= 3) {
+        this.isDisabled = true
+        this.router.navigate(['compare'])
+      } else {
+        this.isDisabled = false
+      }
+    } else {
+      this.arraySelected.find((res, index) => {
+        if (res === endPoint) {
+          console.log(index)
+          this.arraySelected.splice(index, 1)
+          this.store.dispatch(PokemonActions.getPokemonCleanPosition(index))
+          if (this.arraySelected?.length === 0) {
+            this.btnFlag = false
+          }
+        }
+      })
     }
   }
 }

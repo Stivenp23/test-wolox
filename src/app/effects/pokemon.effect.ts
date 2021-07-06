@@ -14,12 +14,24 @@ export class PokemonEffect {
   }
 
   @Effect()
-  getCountry$ = this.actions$.pipe(
+  getAllPokemon$ = this.actions$.pipe(
     ofType(PokemonActions.GET_ALL_POKEMON),
-    take(1),
-    switchMap<any, any>(() =>
-      this.listPokemonService.getAllPokemon().pipe(
+    switchMap<any, any>(data =>
+      this.listPokemonService.getAllPokemon(data.payload).pipe(
         switchMap(res => of(PokemonActions.getAllPokemonSuccess(res))),
+        catchError(err => {
+          return of()
+        })
+      )
+    )
+  )
+
+  @Effect()
+  getPokemonId$ = this.actions$.pipe(
+    ofType(PokemonActions.GET_POKEMON_ID),
+    switchMap<any, any>(data =>
+      this.listPokemonService.getPokemon(data.payload).pipe(
+        switchMap(res => of(PokemonActions.getPokemonIdSuccess(res))),
         catchError(err => {
           return of()
         })
