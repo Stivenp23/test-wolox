@@ -3,6 +3,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Store} from '@ngrx/store'
 import {CountryActions, AuthenticationActions} from 'src/app/actions'
 import {CountryService} from '../../services/country.service'
+import {AuthenticationService} from '../../services/authentication.service'
+import {AuthenticationGuardService} from '../../auth/authentication-guard.service'
+import {delay, first, map} from 'rxjs/operators'
+import {ActivatedRoute, Router} from '@angular/router'
+import {BehaviorSubject} from 'rxjs'
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-tabs-login',
@@ -90,16 +96,24 @@ export class TabsLoginComponent implements OnInit {
     }
   ]
   passwordIssue = ''
+  returnUrl: string
+  private currentUserSubject: BehaviorSubject<any>
 
   constructor(private fb: FormBuilder, private store: Store<any>,
-              public countryService: CountryService) {
+              public countryService: CountryService,
+              public authenticationService: AuthenticationService,
+              public authenticationGuardService: AuthenticationGuardService,
+              private route: ActivatedRoute,
+              private router: Router,
+              public location: Location) {
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')))
     this.store.dispatch(CountryActions.setCountry())
   }
 
   ngOnInit(): void {
     this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,150}$')]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.pattern('^[1-9a-zA-Z]{6,50}$')]]
     })
     this.formRegister = this.fb.group({
       nameR: ['', [Validators.required, Validators.pattern('^[\u00F1A-Za-zñÑÇáéíóúÁÉÍÓÚ\\\\s ]{3,30}$')]],
@@ -111,6 +125,14 @@ export class TabsLoginComponent implements OnInit {
       passwordRConfirm: ['', [Validators.required, Validators.pattern('^[1-9a-zA-Z]{6,50}$')]],
       terms: ['', Validators.required]
     })
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/lista-pokemones'
+    this.authenticationService.tokenRegister$.pipe(
+      map(res => {
+        if (res) {
+          window.location.href = '/lista-pokemones'
+        }
+      })
+    ).subscribe()
   }
 
   onSubmit(type) {
@@ -118,7 +140,15 @@ export class TabsLoginComponent implements OnInit {
     switch (type) {
       case 'login':
         if (this.formLogin.valid) {
-          this.submitValid.emit()
+          this.authenticationGuardService.login(this.formLogin.value.email, this.formLogin.value.password)
+            .pipe(first())
+            .subscribe(
+              data => {
+                this.router.navigate([this.returnUrl])
+              },
+              error => {
+                this.router.navigate(['/login'])
+              })
         } else {
           this.validateAllFormFields(this.formLogin)
         }

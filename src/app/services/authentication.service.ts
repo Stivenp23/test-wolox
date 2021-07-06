@@ -8,12 +8,16 @@ import {Observable} from 'rxjs'
   providedIn: 'root',
 })
 export class AuthenticationService {
-  responseRegister$: Observable<any> = this.store.select('register')
+  tokenRegister$: Observable<any> = this.store.select('authentication', 'token')
 
   constructor(private http: HttpClient, private store: Store<any>) {
   }
 
   setRegister(data) {
     return this.http.post(`${environment.endPointSignUp}/signup`, data)
+  }
+
+  login(user) {
+    return this.http.post(`${environment.endPointSignUp}/login`, user)
   }
 }

@@ -5,7 +5,7 @@ import {LoginComponent} from './pages/login/login.component'
 import {TermsComponent} from './pages/terms/terms.component'
 import {ListPokemonComponent} from './pages/list-pokemon/list-pokemon.component'
 import {ComparePokemonComponent} from './pages/compare-pokemon/compare-pokemon.component'
-
+import { AuthGuard } from './_helpers/auth.quard'
 const routes: Routes = [
   {
     path: '',
@@ -21,12 +21,15 @@ const routes: Routes = [
   },
   {
     path: 'lista-pokemones',
-    component: ListPokemonComponent
+    component: ListPokemonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'compare',
     component: ComparePokemonComponent,
-  }
+    canActivate: [AuthGuard]
+  },
+  { path: '**', redirectTo: '' }
 ]
 
 @NgModule({
